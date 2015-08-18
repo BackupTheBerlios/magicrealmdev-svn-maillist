@@ -1,0 +1,1809 @@
+From craigp at sheep.berlios.de  Sun Mar 27 05:46:23 2005
+From: craigp at sheep.berlios.de (Craig Perras at BerliOS)
+Date: Sun, 27 Mar 2005 05:46:23 +0200
+Subject: [Magicrealmdev-svn] r7 - trunk/resources/xmlData
+Message-ID: <200503270346.j2R3kNdq024677@sheep.berlios.de>
+
+Author: craigp
+Date: 2005-03-27 05:46:21 +0200 (Sun, 27 Mar 2005)
+New Revision: 7
+
+Modified:
+   trunk/resources/xmlData/Tiles.xsd
+Log:
+update comments; test commit mail
+
+Modified: trunk/resources/xmlData/Tiles.xsd
+===================================================================
+--- trunk/resources/xmlData/Tiles.xsd	2005-03-26 09:51:14 UTC (rev 6)
++++ trunk/resources/xmlData/Tiles.xsd	2005-03-27 03:46:21 UTC (rev 7)
+@@ -33,26 +33,6 @@
+             <xs:enumeration value="Secret"/>
+         </xs:restriction>
+     </xs:simpleType>
+-    <!--    
+-    <xs:element name="PathNode" type="NonEmptyToken" abstract="true"/>
+-    <xs:element name="PathClearing" substitutionGroup="PathNode">
+-        <xs:simpleType>
+-            <xs:restriction base="Clearing"/>
+-        </xs:simpleType>
+-    </xs:element>
+-    <xs:element name="MapEdge" substitutionGroup="PathNode">
+-        <xs:simpleType>
+-          <xs:restriction base="xs:token">
+-              <xs:enumeration value="N"/>
+-              <xs:enumeration value="NE"/>
+-              <xs:enumeration value="SE"/>
+-              <xs:enumeration value="S"/>
+-              <xs:enumeration value="SW"/>
+-              <xs:enumeration value="NW"/>
+-          </xs:restriction>
+-        </xs:simpleType>
+-    </xs:element>
+--->
+     <xs:simpleType name="MapEdge">
+         <xs:restriction base="xs:token">
+             <xs:enumeration value="N"/>
+@@ -63,6 +43,15 @@
+             <xs:enumeration value="NW"/>
+         </xs:restriction>
+     </xs:simpleType>
++<!--    
++    <xs:element name="PathNode" type="NonEmptyToken" abstract="true"/>
++    <xs:element name="PathClearing" substitutionGroup="PathNode">
++        <xs:simpleType>
++            <xs:restriction base="Clearing"/>
++        </xs:simpleType>
++    </xs:element>
++    <xs:element name="MapEdge" type="MapEdge" substitutionGroup="PathNode"/>
++-->
+     <xs:simpleType name="PathNode">
+         <xs:union memberTypes="MapEdge Clearing"/>
+     </xs:simpleType>
+
+
+
+From craigp98072 at yahoo.com  Sun Mar 27 22:00:57 2005
+From: craigp98072 at yahoo.com (craig perras)
+Date: Sun, 27 Mar 2005 12:00:57 -0800 (PST)
+Subject: [Magicrealmdev-svn] test2
+Message-ID: <20050327200057.89213.qmail@web53902.mail.yahoo.com>
+
+test2
+
+
+		
+__________________________________ 
+Do you Yahoo!? 
+Yahoo! Small Business - Try our new resources site!
+http://smallbusiness.yahoo.com/resources/ 
+
+
+From craigp at sheep.berlios.de  Mon Mar 28 02:03:29 2005
+From: craigp at sheep.berlios.de (Craig Perras at BerliOS)
+Date: Mon, 28 Mar 2005 02:03:29 +0200
+Subject: [Magicrealmdev-svn] r8 - in trunk: . docs docs/impl docs/impl/todo
+Message-ID: <200503280003.j2S03Tc0006803@sheep.berlios.de>
+
+Author: craigp
+Date: 2005-03-28 02:03:21 +0200 (Mon, 28 Mar 2005)
+New Revision: 8
+
+Added:
+   trunk/docs/
+   trunk/docs/impl/
+   trunk/docs/impl/phase0.txt
+   trunk/docs/impl/todo/
+   trunk/docs/impl/todo/bw_class_design.txt
+   trunk/docs/impl/todo/combat_design.txt
+   trunk/docs/impl/todo/forum_notes.txt
+   trunk/docs/impl/todo/magic_notes.txt
+   trunk/docs/impl/todo/milestone1.txt
+   trunk/docs/impl/todo/milestone2.txt
+   trunk/docs/impl/todo/mr_game_notes.txt
+   trunk/docs/impl/todo/mrsetup.txt
+   trunk/docs/impl/todo/roadmap.txt
+   trunk/docs/impl/todo/scenario1.txt
+Log:
+added some docs (very disorganized)
+
+
+Added: trunk/docs/impl/phase0.txt
+===================================================================
+--- trunk/docs/impl/phase0.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/phase0.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,126 @@
++
++TODO:
++
++project web page; upload files to ftp site
++svn mailing list does not work (opened support ticket #101312 on 3/26)
++strip out XMLSpy line in svn config
++add enchanted side to tiles
++multi-realm support in xml files (setup, scenario, game files)
++GUI: 
++
++
++Done:
++
++refactor tile xml files
++remove CVS dirs from resources/...
++remove old trunk/xmlData dir
++
++
++
++
++cities3d has been inactive for ~3 months now
++
++(a 'PBEM player' game tracks an exiting PBEM game from a player's
++perspective, not DM; a DM would probably just use the 'single-player' game
++option)
++
++
++GUI rev 0.1
++  save/load game
++    single-player (hotseat?)
++    'PBEM player' game
++  setup/configuration (multiple realms)
++    single-player
++    'PBEM player': use placeholders (items will be set as they are found in the PDEM game)
++  (no map support yet)
++  select characters (spells, VC's, starting equipment, etc)
++  place visitor/mission/campaign chits
++  
++  query/edit character info
++    update belongings, etc
++  victory condition calculator
++    
++  query, edit game info (similar to stooge, but tracks game state)
++    * loot/peek/read-runes treasures/spells (sites, natives, visitors, spell books, artifacts)
++    * option to automagically roll dice, or input die roll
++    * 'PBEM player' mode: set/define placeholder items as they are found in the PBEM game
++ 
++
++
++
++    
++Dependencies:
++
++  graphics
++    OpenGL
++    ImageMagick
++
++  unit test harness
++    Boost Test Lib http://boost.org/libs/test/doc/index.html
++
++  Gen utility libraries
++    Boost: smart pointers, etc
++    
++  logging
++    Boost log libs (non-official)
++      (this looks the most complete/well-documented) http://www.torjo.com/
++      http://www.eng.buffalo.edu/~johneddy
++      
++    log4cplus (log4cplus 1.0.2, 2004-02-10)
++    log4cxx (last 0.9.7; from there website: "out-of-date and buggy"; new release ??)
++    log4cpp (last release 3.4b on 10/27/2002)
++        
++  GUI
++    wxWidgets 2.5.4
++      use xrc?
++    
++    boost gui pages  
++      http://www.crystalclearsoftware.com/cgi-bin/boost_wiki/wiki.pl?BoostGUI
++          
++    GUI Generics lib
++      only win32 for now... may be ported to gtk later (sent email to author on 3/27)
++      http://www.torjo.com/win32gui/index.html
++      http://sourceforge.net/projects/win32gui/
++  
++  xml serialization:
++    Altova code generation
++    gSOAP or Axis code gen?
++    write custom library (eg: wrapper over Altova/SOAP generated code?)
++      boost serialization library (maybe with xslt)
++      berkely dbxml (xquery support)
++    
++  database code (transaction support)
++    berkely dbxml (GPL)
++    postgresql
++      DTL (Database Template Library ODBC)
++    
++    
++possible utilities/dependencies:
++  parsing: 
++    Boost Spirit http://boost.org/libs/spirit/index.html
++
++  constraints library?
++
++
++
++
++PBEM Player mode: 0.2+
++  Setup:
++    use placeholders
++    these will be set/configured in the program as they are found in the PBEM game
++    * 'PBEM player' mode: have treasure/spell placeholders, set/place items when they are found
++
++
++
++
++Map (0.2?):
++  build/gen map (save/load map)
++  flip, rotate tiles
++  optionally validate connections
++  export as png (set size?)
++  
++  
++  
++http://www.boardgamegeek.com/game/22
++https://developer.berlios.de/projects/magicrealmdev/
++scp shell.berlios.de:/home/groups/ftp/pub/magicrealmdev
+
+
+Property changes on: trunk/docs/impl/phase0.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/bw_class_design.txt
+===================================================================
+--- trunk/docs/impl/todo/bw_class_design.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/bw_class_design.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,368 @@
++Magic Realm Class Properties
++GAME SETTINGS
++
++TOGGLE WHICH ADVANCED AND OPTIONAL RULES ARE BEING USED:
++advAlertMonsters as Boolean
++advAlertPeerWhileFlying as boolean
++advAmbush as boolean
++advCache as boolean
++advDragonHeadsBreathe as boolean
++advDroppingItems as boolean
++advPackHorses as boolean
++advPowPitMelee as boolean
++advSeriousWounds as boolean
++
++optCharCaptain as boolean
++optCharDruid as boolean
++optCharElfType as string
++optCharElves as boolean
++optCharMagician as boolean
++optCharWizard as boolean
++optCharWoodsGirl as boolean
++
++optCombatMissleFumble as boolean
++optCombatPenetratingArmor as boolean
++optCombatRidingHorses as boolean
++optCombatStumble as boolean
++
++optCommerceGrudges as boolean
++optCommercePricing as boolean
++optCommerceSellTable as boolean
++
++optMagicAutoEnchant as boolean
++optMagicEnhancedArtifacts as boolean
++optMagicEnhancedMagic as boolean
++
++optQuietMonsters as boolean
++
++optSeason as clsSeason
++optSeasonWeatherChit as integer
++optSeasonWeatherNextWeek as string
++optSeasonWeatherThisWeek as string
++
++GENERAL SETTINGS:
++familiarPlaying as boolean
++gameDay as integer
++gameMonth as integer
++numberOfMonths as integer
++numberOfPlayers as integer
++
++
++TILE CLASS (clsTile)
++affectedByFog as boolean
++affectedByLost as boolean
++affectedByViolentStorm as boolean
++chitsAlreadyViewed as boolean
++chitsSummonedMonstersToday as boolean
++clearing(6) as clsClearing
++edgeIsRoad(6) as boolean
++enchanted as boolean
++imageRootName as string
++lostCastle as boolean
++lostCity as boolean
++name as string
++orientation as integer
++placedOnMap as Boolean
++siteSoundChit(5) as clsMapChit
++viewChits as boolean
++warningChit as clsMapChit
++warningXcoordinate as integer
++warningYcoordinate as integer
++XLocationOnMap as integer
++YLocationOnMap as integer
++
++CLEARING CLASS (clsClearing)
++abondonedPile(100) as clsBelonging
++affectedByBlazingLight as boolean
++colorMagicPresent(8) as boolean
++connectsToBorderLand as boolean
++cryptOfTheKnightHere as boolean
++enchantedMeadowHere as boolean
++exists as boolean
++isCave as boolean
++isMountain as boolean
++monstersHere(50) as clsDenizen
++nativesHere(50) as clsDenizen
++numberPlayersHere as integer
++pathTo(12,2) as boolean
++siteSoundOrDwellingHere(3) as clsMapChit
++toadstoolCircleHere as boolean
++xCoordinate as integer
++yCoordinate as integer
++
++MAP CHIT CLASS (clsMapChit)
++clearing as integer
++name as string
++type as string
++
++ACTION CHIT CLASS (clsActionChit)
++active as boolean
++asterisks as integer
++chitType as string
++enchanted as boolean
++fatigued as boolean
++magicType as integer
++prepared as boolean
++strengthLetter as integer
++timeNumber as integer
++wounded as boolean
++
++BELONGING CLASS (clsBelonging)
++active as boolean
++basicGoldPrice as integer
++name as string
++owned as boolean
++ownedBy as string
++weight as integer
++
++WEAPON CLASS (extends clsBelonging)
++alerted as boolean
++alertedSideAttackTime as integer
++alertedSideHarmLetter as integer
++alertedSideSharpnessStars as integer
++fameValue as integer
++length as integer
++missileWeapon as boolean
++notorietyValue as integer
++unalertedSideAttackTime as integer
++unalertedSideHarmLetter as integer
++unalertedSideSharpnessStars as integer
++
++ARMOR CLASS (extends clsBelonging)
++armorType as string
++damaged as boolean
++damagedGoldPrice as integer
++destroyed as boolean
++destroyedGoldPrice as integer
++fameValue as integer
++notorietyValue as integer
++
++HORSE CLASS (extends clsBelonging)
++armored as boolean
++dead as boolean
++DSmoveTime as integer
++DSstrengthLetter as integer
++galloping as boolean
++horseType as string
++IDcodeLetter as string
++IDcodeNumber as integer
++LSmoveTime as integer
++LSstrengthLetter as integer
++size as integer
++vulnerability as integer
++
++TREASURE CLASS (extends clsBelonging)
++artifact as boolean
++artifactSpell as clsSpell
++colorMagicProvided as integer
++effect as string
++famePrice as integer
++famePriceGroup as string
++fameValue as integer
++greatTreasure as boolean
++largeTreasure as boolean
++magicType as integer
++notorietyValue as integer
++potion as boolean
++potionDiscardTo as string
++siteCard as boolean
++spellBook as boolean
++spellBookSpell(4) as clsSpell
++substituteCard as boolean
++treasWithinTreasNum as integer
++
++SPELL CLASS (extends clsBelonging)
++duration as string
++effect as string
++longDescription as string
++magicColorRequired as integer
++magicType as integer
++target as string
++
++HISTORY PAD CLASS (clsHistoryPad)
++orders(13,28,15,2) as string (13 months by 28 days by 15 actions by 3 action details) 
++
++TREASURE CARD SETUP BOX CLASS (clsTreasureCardSetupBox)
++name as string
++occupants(10) as clsDenizen
++occupied as boolean
++stashArmor(25) as clsArmor
++stashGold as integer
++stashHorses(25) as clsHorse
++stashSpell(25) as clsSpell
++stashTreasures(25) as clsTreasure
++stashWeapons(25) as clsWeapon
++visitorMissionChitName as string
++
++SEASON CLASS (clsSeason)
++clearBasicPhases as integer
++clearDaysPerWeek as integer
++clearName as string
++clearShelteredPhases as integer
++clearSunlightPhases as integer
++description as string
++escortTo1 as string
++escortTo2 as string
++fatigueIfEndPhaseInMountain as boolean
++fatigueIfEndPhaseOutsideCaveOrDwelling as boolean
++fatigueIfNotInCaveOrDwellingAtBirdsong as boolean
++fatigueIfNotInCaveOrMountainAtBirdsong as boolean
++foodTo1 as string
++foodTo2 as string
++magicOn7thDay as integer
++name as string
++noHideAllowed as boolean
++noPeerAllowed as boolean
++phasesIntoMountain as integer
++reward as integer
++seasonNum as integer
++showersBasicPhases as integer
++showersDaysPerWeek as integer
++showersName as string
++showersShelteredPhases as integer
++showersSunlightPhases as integer
++specialBasicPhases as integer
++specialDaysPerWeek as integer
++specialName as string
++specialShelteredPhases as integer
++specialSunlightPhases as integer
++stormBasicPhases as integer
++stormDaysPerWeek as integer
++stormName as string
++stormShelteredPhases as integer
++stormSunlightPhases as integer
++VPs as integer
++
++DENIZEN CLASS (clsDenizen)
++affectedByBlendIntoBackground as boolean
++affectedByLost as boolean
++armored as boolean
++basicGoldWage as integer
++bountyFame as integer
++bountyGold as integer
++bountyNotoriety as integer
++currentLocationClearingNum as integer
++currentLocationTileNum as integer
++darkSideUp as boolean
++dead as boolean
++DSattackTime as integer
++DSharmLetter as integer
++DSmoveTime as integer
++DSsharpnessStars as integer
++flies as boolean
++hired as boolean
++hiredBy as string
++IDcodeLetter as string
++IDcodeNumber as integer
++inventoryArmor(5) as clsArmor
++inventoryBreastplates(5) as clsArmor
++inventoryHelmets(5) as clsArmor
++inventoryHorses(20) as clsHorse
++inventoryShields(5) as clsArmor
++inventoryTreasures(50) as clsTreasure
++inventoryWeapons(20) as clsWeapon
++LSattackTime as integer
++LSharmLetter as integer
++LSmoveTime as integer
++LSsharpnessStars as integer
++moveStrength as integer
++name as string
++ownsHorse as boolean
++size as integer
++usesMissileWeapon as boolean
++vulnerability as integer
++weapon as string
++weaponLength as integer
++weight as integer
++
++CHARACTER CLASS (clsCharacter)
++actionChits(12) as clsActionChit
++activity(10) as string
++advantage1 as string
++advantage1description as string
++advantage2 as string
++advantage2description as string
++affectedByBlendIntoBackground as boolean
++affectedByCurseSqueak as boolean
++affectedByLost as boolean
++affectedBySeeHiddenSigns as boolean
++affectedBySenseDanger as boolean
++class as string
++combatTarget as clsDenizen
++combatTargetPlayer as clsCharacter
++currentLocationClearingNum as integer
++currentLocationTileNum as integer
++foundAltar as boolean
++foundCairns as boolean
++foundCryptOfTheKnight as boolean
++foundEnchantedMeadow as boolean
++foundEnemies as boolean
++foundHoard as boolean
++foundLair as boolean
++foundPaths(40,12,2) as boolean
++foundPool as boolean
++foundShrine as boolean
++foundStatue as boolean
++foundToadstoolCircle as boolean
++foundVault as boolean
++hidden as boolean
++hiddenCounter as picture
++hirelings(20) as clsDenizen
++historyPad as clsHistoryPad
++inventoryArmor(5) as clsArmor
++inventoryBreastplates(5) as clsArmor
++inventoryHelmets(5) as clsArmor
++inventoryHorses(20) as clsHorse
++inventoryShields(5) as clsArmor
++inventoryTreasures(50) as clsTreasure
++inventoryWeapons(20) as clsWeapon
++name as string
++notes as string
++playerPic as picture
++relationshipBashkars as integer
++relationshipCompany as integer
++relationshipCrone as integer
++relationshipGuard as integer
++relationshipLancers as integer
++relationshipOrder as integer
++relationshipPatrol as integer
++relationshipRogues as integer
++relationshipScholar as integer
++relationshipShaman as integer
++relationshipSoldiers as integer
++relationshipWarlock as integer
++relationshipWoodfolk as integer
++spellsKnown(40) as clsSpell
++startChapel as boolean
++startGhosts as boolean
++startGuard as boolean
++startHouse as boolean
++startInn as boolean
++symbol as picture
++totalFame as integer
++totalGold as integer
++totalGreatTreasures as integer
++totalNotoriety as integer
++totalSpells as integer
++unhiddenCounter as picture
++vpsFame as integer
++vpsGold as integer
++vpsGreatTreasures as integer
++vpsNotoriety as integer
++vpsSpells as integer
++vulnerability as integer
++weight as integer
++
++ALL TOGETHER YOU GET THE ?PIECES? ARRAYS
++armor(19) as clsArmor
++monsters(64) as clsDenizen
++nativehorses(17) as clsHorse
++natives(42) as clsDenizen
++player(17) as clsCharacter
++playerHorses(17) as clsHorse
++season(13) as clsSeason
++setupCard(55) as clsTreasureSetupCardBox
++spellList(47) as clsSpell
++treasureList(74) as clsTreasure
++weapons(28) as clsWeapon 
++
+
+Added: trunk/docs/impl/todo/combat_design.txt
+===================================================================
+--- trunk/docs/impl/todo/combat_design.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/combat_design.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,39 @@
++list of participants:
++
++characters
++natives
++denizens
++
++'teams' ?
++
++----
++
++order (by character/controlled denizen)
++
++----
++
++
++Evening Start:
++
++Denizens light-side up (optional alerted rule)
++T monsters red-side down
++set hidden hirelings/characters
++
++
++for each clearing (in order):
++
++  Battling Natives
++
++  N rounds of combat (2 consecutive rounds without 'results')
++
++  maintain hidden status ?
++
++  trading/rearranging
++
++loop clearing
++
++----
++
++
++allow undo??
++
+
+
+Property changes on: trunk/docs/impl/todo/combat_design.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/forum_notes.txt
+===================================================================
+--- trunk/docs/impl/todo/forum_notes.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/forum_notes.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,135 @@
++Email Bryan Winter: bryan at thewinternet.com
++
++clearing coordinates
++
++
++Program source (stooge)
++Current games
++all transparent tiles in one download?
++  http://www.thewinternet.com/magicrealm/tiles/index.html
++
++stooge: http://www.thewinternet.com/magicrealm/stooge.html
++http://www.thewinternet.com/mr_board_code.html
++http://www.magicrealm.net/cgi-bin/ikonboard/ikonboard.cgi?s=3f847fc363f5ffff;act=ST;f=7;t=11
++
++
++---
++
++D-Arch: mapmaker.pl
++http://www.passwd.net/~darch/magic_realm/src/
++
++
++http://www.tumbolia.org/magicrealm/code/chit_placer.html
++http://www.tumbolia.org/magicrealm/code/treasure_placer.html
++
++---
++
++
++
++MR MUD and web engine:
++
++http://www.magicrealm.net/cgi-bin/ikonboard/ikonboard.cgi?s=3f847fc363f5ffff;act=ST;f=7;t=15
++
++
++
++----
++
++Works great!  Anyone who bashes your code has to answer to me.  
++
++I hit refresh quite often to build a new map (sorry I couldn't resist).  Thank heavens for my cable modem!  The maps are perfect - nice and random and quite legal.
++
++The only real note is that sometimes a map will generate that is too "wide" and it extends beyond the right edge of the image, and is cut off.  I'm not sure if you are doing it this way, but in my drawing routine I create a "blank" image that is the correct size (based on the final mapGrid dimensions) and then plop the tiles into it.  I found that the perfect (x,y) coordinates for the final image size are:
++
++width: (endingX * (tile.width * .75)) + tile.width
++height: (endingY * tile.height) + tile.height + (tile.height/2)
++
++Also, in my program I have a "minimap" view for navigation. But it is restricted to a specific size. So when I have to resize my big image down and make sure it fits in the bounds of its "container" I also have to make sure a "wide" map and a "tall" map will both fit.  So here is some pseudo-code that does this:
++
++if bigMapPic.width > bigMapPic.height then
++    smallMapPic.width = smallPicContainer.width
++    smallMapPic.height = bigMapPic.height*(smallPicContainer.width/bigMapPic.width)
++else
++    smallMapPic.width = bigMapPic.width*(smallPicContainer.height/bigMapPic.height)
++    smallMapPic.height = smallPicContainer.height
++end if
++
++Hope that helps!
++
++
++----
++
++Code Sample:
++#!/usr/bin/perl
++#
++# Builds a static map dynamically from individual pieces.
++
++use GD;
++
++my $tilewidth = 374;
++my $tileheight = 324;
++
++my $tilepath = "/home/darch/beach/experiments/bigtiles";
++
++my @map =(
++       ["", "", "badvalley4", "awfulvalley1"],
++       ["", "cliff4", "lindenwoods6", "crag5", "deepwoods2", "ruins6"],
++       ["ledges3", "pinewoods4", "borderland1", "nutwoods4", "curstvalley3", "oakwoods2",],
++       ["evilvalley2", "cavern1", "darkvalley6", "mountain1", "caves2"],
++       ["", "", "maplewoods3", "", "highpass6"]
++);
++
++# Find width of the map.  Should even deal gracefully with holes
++
++my ($leftmargin, $rightmargin) = (30, 0);
++
++for my $row (@map) {
++       my ($i, $foundtiles) = (0, 0);
++       for my $col (@$row) {
++               if ($col && !$foundtiles && ($i < $leftmargin)) {
++                       $leftmargin = $i;
++                       $foundtiles = 1;
++               }
++               if ($col && ($i > $rightmargin)) {
++                       $rightmargin = $i + 2;
++               }
++               $i++;
++       }
++}
++
++my $width = (($rightmargin - $leftmargin) * $tilewidth * .75) + 50;
++my $height = ($#map + 1 + .5) * $tileheight + 40;
++
++$im = new GD::Image($width, $height);
++
++$im->colorAllocate(128,128,128); # background color grey
++
++my $j = 0;
++for my $row (@map) {
++       my $i = 0;
++       for my $tile (@$row) {
++               next unless $tile;
++               last if $i >= $rightmargin;
++               my $src = newFromPng GD::Image("${tilepath}/${tile}-01.png");
++
++               # offset odd-numbered rows
++               if (($i - $leftmargin) % 2) {
++                       $x = (($i - $leftmargin) * .75 * $tilewidth) + 25;
++                       $y = ($j * $tileheight) + (.5 * $tileheight) + 20;
++               } else {
++                       $x = (($i - $leftmargin) * .75 * $tilewidth) + 25;
++                       $y = ($j * $tileheight) + 20;
++               }
++               $im->copy($src, $x, $y, 0, 0, $tilewidth, $tileheight);
++       } continue {
++               $i++;
++       }
++       $j++;
++}
++
++$output = $im->jpeg;
++
++print "Content-type: image/jpeg\n\n";
++
++binmode STDOUT;
++
++print $output;
+
+
+Property changes on: trunk/docs/impl/todo/forum_notes.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/magic_notes.txt
+===================================================================
+--- trunk/docs/impl/todo/magic_notes.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/magic_notes.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,49 @@
++In an enchanted tile, each character or denizen is supplied with the color
++of magic that is pictured around the clearing where he is located. GREY
++magic is supplied in the five VALLEY tiles and the RUINS tile, GOLD
++magic is supplied in the six WOODS tiles, and PURPLE magic is supplied
++in the MOUNTAIN, LEDGES, CLIFF, HIGH PASS, CAVES and
++CAVERN tiles. GREY, GOLD and PURPLE magic are supplied in every
++clearing on the CRAG tile. In the BORDERLAND tile, GREY magic is
++supplied in clearing ?1?, GOLD magic is supplied in clearings ?2? and ?3?,
++PURPLE magic is supplied in clearings ?4? and ?5?, and both GREY and
++PURPLE magic are supplied in clearing ?6?.
++
++b. When a tile supplies color magic to a clearing, it also supplies color
++magic to every roadway that runs into that clearing. When a character is on
++a roadway between two clearings, both clearings supply him with color
++magic. EXAMPLE: When a character is on a roadway between an
++enchanted VALLEY tile and an enchanted WOODS tile, he is supplied with
++both GREY and GOLD magic.
++
++
++
++---
++
++2) When using the phantasm spell, IIUC the phantasm and caster can use each other's color magic sources (eg: they are on different enchanted tiles) to allow the phantasm to enchant the tile (7.10.5 3ed). If the phantasm does the RE activity, I assume it needs to do an EM phase first (even if the caster doesn't need to), then the caster must supply the appropriate ritual magic. The caster can also do the RE during his own turn, using color magic from the phantasm's clearing. In both cases, can each one only 
++
++--> phantasm expires after daylight anyway
++
++
++
++
++Hi Dan -
++
++I'd appreciate it if you could clarify 3 questions. I apologize for the length; if it's any consolation, if you answer them I'll post them to the wiki board! 
++
++1) If the Woods Girl is using her optional ability to extend her tracking skills to all woods clearings (except for Ruins and Valley tiles), what is considered a 'mountain' in cases like, for instance, Cliff clearings 2, 3, and 5? Are they mountain or woods? Based on the definition:
++
++There are three types of clearings: black underground clearings are cave clearings or "caves"; light brown clearings surrounded by grey mountain ridges are "mountain" clearings; and all other clearings are ?woods? clearings.
++
++I would guess 'woods' since they aren't surrounded.
++
++2) When using enhanced magic + artifacts and spell books (which IIUC we are), does that mean magic-users can have an unlimited number of, say, broomstick chits? If multiple absorb-essence spells have been cast, what order are they energized in, first -> last or last -> first (I think the former)? I understand that if they are all energized simultaneously (eg: toadstool circle)the caster can choose what he transmorphizes into. 
++
++For a contrived scenario, say the Witch has three spells active, affecting monsters A, B, C (oldest -> most recent spell cast). She activates an enchanted  black-magic chit, so she transforms into A (?). Then someone stumbles into her clearing and discovers the toadstool circle. Can she choose to transform into any of the three, or only B and C now?
++
++3) If multiple enchant-artifact spells are in effect on a spellbook, does it need to be energized once for each spell to be made available (or will a single color chit activate them all?), and if so, can the caster choose which spell (or is it ordered similar to absorb-essence)? 
++
++With the enhanced rules, if, say, a type II spellbook is enchanted (per Enchant Artifact) with type III spells, and it is currently enchanted to grey magic, are the type III spells available, or is the book unavailable while enchanted? Does activating the book to use as a source of grey color magic count towards it being used, so it's type II spells are unavailable that Evening? Can the user activate the grey magic from the book to activate a type III spell on the enchanted book itself (making the type III spell immediately available)?
++
++
++
+
+
+Property changes on: trunk/docs/impl/todo/magic_notes.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/milestone1.txt
+===================================================================
+--- trunk/docs/impl/todo/milestone1.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/milestone1.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,365 @@
++Magic Realm Setup:
++
++
++Visitor/Mission Chits:
++
++1-2 encounter: crone, warlock, shaman, scholar
++3+ encounter: 2 others (TBD)
++
++
++Map Chits:
++
++8 gold-colored site chits
++10 red sound chits
++20 yellow warning chits: 5 each of V, W, C, M
++
++Lost City, Lost Castle: 5 random site/sound chits each
++
++
++
++Phase/Encounter 1:
++
++
++-----------------
++
++    Task1:
++game: single-player, hotseat, PBEM/manual/god mode (user has full control, no automation)?
++  history? undo/redo?
++  load/save game
++  preferences
++  about
++  help?
++
++
++Setup 
++  add players 
++  choose characters 
++  set game preferences
++  
++    toolbar: available characters
++      gray out unavailable characters; show stats
++
++players:
++  preferences 
++    some per-character? eg: sounds
++  manage characters (within game context):
++    new/load/save pc
++      -> separate menu than file?
++      why? shouldn't this just be saved with rest of game data?
++      
++    choose character (class)
++    manage belongings, state
++      curses, vc's, death
++
++victory-point calculator
++
++
++
++    Task:
++load/save/build/generate map
++  toolbar: tiles
++
++
++    Task:
++main game loop
++  save history (game history, individual character history, )
++  undo/redo
++  popup
++  
++  
++Birdsong:
++  log orders: Move, Search, Hide, Rest, Trade, Enhanced Peer (must have special item).
++
++Daylight:
++  follow orders block, arrange belongings
++  monster/native appearance
++
++Evening: 
++  Arrange Belongings, Block (natives??).
++  Trade (between characters --> not this phase), 
++
++
++-----------------
++
++IMPL:
++
++GUI: 
++  wxWindows native
++  use xrc
++
++  listbook -> 'toolbar'
++
++adapt Cities3D
++  ideally would use xrc
++  use xrc and derive from UICore controls?
++  Cities3D works up till final placement
++  
++  keep:
++    DatabaseCore
++      replace with XML-Schema based solution
++      maybe dbxml
++
++    UICore
++    RulesCore
++    NetworkRules
++      later phase
++      
++      
++  hack:
++    Cities3D
++      top-level UI/View
++      add player, player tree, etc
++      
++    CoreRules
++      initial setup (just rewrite from scratch?)
++      
++    GLCore
++      mostly generic
++
++    ModelCore
++      map, 
++      
++    StandardRules
++      mostly parallel; don't adapt
++  
++
++  don't use:
++    CitiesRules ?
++        
++
++-----------------
++
++Cities3D
++
++
++
++
++
++-----------------
++
++cvs -d :pserver:anoncvs at cvs.wxwidgets.org:/pack/cvsroots/wxwidgets checkout wxWidgets
++
++XrcEd http://xrced.sourceforge.net/#download
++
++  --> primarily edit by hand (xml-spy); use XrcEd to help visualize/create skeleton
++
++eventually make re-usable objects & use xml-schema to merge them dynamically?
++
++new hotseat game
++  dialog with options
++  
++
++
++
++
++
++calendar control: FEB 2009
++  wxCalendarCtrl
++    wxControl *GetMonthControl() const;
++    wxControl *GetYearControl() const;
++
++    //cdp: try updating calendar ctrl
++    wxCalendarCtrl* calendar = XRCCTRL(dlg, "controls_calendarctrl", wxCalendarCtrl);
++    wxControl* month = calendar->GetMonthControl();
++    wxControl* year = calendar->GetYearControl();
++    
++    wxString ml = month->GetLabel();
++    wxString yl = year->GetLabel();
++
++    //day, month, year
++    wxDateTime date(1, wxDateTime::Feb, 2009);
++    calendar->SetDate(date);
++    //  SetYear
++    //  SetMonth(wxDateTime::Feb
++    month->SetLabel("Freitag");
++    //year->SetLabel();
++
++-----------------
++
++
++
++
++Picking a Character:
++
++Choose one of the following (the rest are at a disadvantage in this encounter):
++
++Amazon
++	starts in Inn.
++Dward
++	starts at Guard House or Inn.
++Swordsman
++	starts at Inn.
++White Knight
++	Starts at Inn or Chapel.
++Wizard
++	starts at Inn, House, or Guard House.
++Woods Girl
++	starts at Inn or House.
++
++Get character card, counter (large round counter), all 12 action chits, and weapon
++and armor counters listed in fourth (final) development stage (only those).
++
++Get a Personal History Pad (PHP), write down your character's special advantages.
++Choose dwelling where character will start and victory conditions (secretly).
++
++
++Victory Requirements:
++
++Choose 5 points total and distribute them among the four categories.
++They represent what is most important to the character.
++Characters get a bonus for exceeding these requirements, and are penalized for 
++failing to meet them.
++
++TODO: computing victory points, winning
++
++
++Ending the Game:
++
++Characters may leave the may or suicide.
++If character leaves the map, compute score immediately. 
++
++At the end of the game, characters discard all items they cannot carry.
++Count up the score in each category and subtract requirement recorded. If < 0, 
++multiply by 3 as a penalty.
++
++Basic score: divide each category by its factor (round down).
++Bonus score: multiply basic score in each category by victory points assigned.
++Total score: sum of all basic and bonus scores.
++
++Each character who has a total score of 0 has fulfilled victory requirements
++and can be said to have won the game. 
++
++Victor is character with most points. There may be a victor without a winner!
++
++
++Activities:
++
++Each character gets one turn per day to do activities.
++Characters can perform one action per phase.
++If character spends whole day outside of caves, he gets four phases. 
++Otherwise, he only gets two.
++
++The day is divided into these phases:
++  TODO: Daily Sequence of Play
++
++
++You may pick one activity per phase. 
++The following activities must be recorded in advance in the activity section of the PHP
++during Birdsong:
++
++Move, Search, Hide, Rest, Trade (with natives/visitors), 
++Enhanced Peer (must have special item).
++
++The following can be done in the Evening:
++Trade (between characters), Arrange Belongings, Block.
++
++
++Move:
++  Must move from clearing to clearing, one clearing at a time.
++
++  To record, write "M <tile> <clearing>", where tile can be an abbreviation
++  and clearing is the number. Example: M NW-2 to move to second clearing of Nut Woods.
++  To avoid ambiguity, use 'CG' for Crag, 'CL' for Cliff, 'CS' for Caves, 'CN' for 
++  Cavern.
++
++  May play a move chit whenever leaving a clearing (this is not fatigued), 
++  or active horse or Boots card. Any of these can be played each move.
++    The strength of this chit must meet or exceed the heaviest item the character has,
++	else the character must drop the heavy item(s) (he cannot choose not to move 
++	if the move was plotted in advance).
++  
++  Mountain:
++    Costs two movements (consecutive, during same day) to enter mountain clearing.
++
++  Cave:
++    Cannot enter cave during day in which character used sunlight activity.
++
++  Horses:
++    Horses which are active are being ridden, else they are pack horses and follow 
++	character. Horses cannot enter caves (immediately become inactive).
++
++    To get move bonus, must have horse active during Birdsong and active when he
++	executes the phase during Daylight.
++
++    Warhorse: not extra movement
++	Pack horse: one extra move phase
++	Pony: double move phases
++
++
++
++
++Search:
++  May pick which table to use (Peer, Locate, Loot).
++
++Hide:
++  Characters are hidden at start of game.
++  Characters are unhidden at start of each turn.
++  To record, write 'H'.
++  To hide, roll dice and check the Hide table. If successful, turn counter green side up.
++  Hidden characters are green side up (tan means unhidden).
++  Hidden characters can do activities. If they block, they are immediately unhidden.
++  Monsters cannot block hidden characters.
++  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
++	
++Rest:
++  To record, write 'R'.
++  May activate one fatigued asterisk or convert one wounded asterisk to a
++  fatigued asterisk after each rest activity. May exchange chits to 'make change'.
++
++  TODO: fatigue, wounds
++
++
++Trade:
++  To record, write 'T'.
++  May buy one item or sell any number of items during each trade activity.
++  May buy natives drinks to (hopefully) improve success during trading. This costs 
++  one gold per member of the group.
++
++  Characters must reveal all treasure items they obtain as a result of a trade.
++  TODO: repairing items, fame price, 
++
++Arrange Items:
++
++
++Blocking:
++  Monsters, natives, and characters may block each other.
++  Only time a character can block or be blocked is during his turn.
++  When a character blocks or is blocked, his turn ends instantly and he is unhidden.
++  Monsters cannot block hidden characters.
++  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
++
++
++Discoveries:
++  Discoveries are transferable (may be sold or discovered by spying).
++  
++  Spying: TODO
++
++
++Trade Between Characters:
++
++Sharing Information:
++
++
++
++
++
++wxALL
++
++
++wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib DatabaseCoreD.lib RulesCoreD.lib
++                 wxbase25d.lib wxmsw25d_core.lib wxmsw25d_adv.lib 
++                 
++                 
++layout:
++  wxmsw25d_core.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib 
++    winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib                 
++    
++xrcdemo:
++  wxmsw25d_xrc.lib wxmsw25d_html.lib wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d_xml.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib 
++    winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib    
++    
++uicore:
++  wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib 
++    DatabaseCoreD.lib RulesCoreD.lib    
++    
++wxmsw25d_xrc.lib wxmsw25d_html.lib wxmsw25d_adv.lib wxmsw25d_core.lib wxbase25d_xml.lib wxbase25d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib DatabaseCoreD.lib RulesCoreD.lib
+\ No newline at end of file
+
+
+Property changes on: trunk/docs/impl/todo/milestone1.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/milestone2.txt
+===================================================================
+--- trunk/docs/impl/todo/milestone2.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/milestone2.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,26 @@
++
++Second Encounter:
++
++Characters:
++  TODO
++
++
++
++Activites:
++  Alert (TODO: must be recorded? must use up full activity?)
++
++
++Combat:
++
++  encounter:
++    may play a move chit to run away or a fight chit to activate a weapon 
++    (only if movement time < all monsters' times)
++	if chit was not played, may activate/inactivate one belonging or abandon any 
++	belongings.
++
++  melee:
++    when weapon hits, turn unalerted side up
++    when weapon misses, turn alerted side up
++    
++
++
+
+
+Property changes on: trunk/docs/impl/todo/milestone2.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/mr_game_notes.txt
+===================================================================
+--- trunk/docs/impl/todo/mr_game_notes.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/mr_game_notes.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,57 @@
++http://www.redridgegames.com/MR/
++
++Repositioning natives (in attack circles): roll once, or roll for each box? (Day 2)
++ambushing: hidden natives attack spider; do they get free attack?? (day 3, magician)
++
++
++Serpent is armored (or should be)
++
++
++can sell info if blocked? can't trade, IIRC.
++
++
++when do characters become unhidden (start of day or start of turn)?
++
++absorbed monster killed if spellcaster killed?
++
++remedy can't cure wither curse??
++
++---
++
++In an enchanted tile, each character or denizen is supplied with the color
++of magic that is pictured around the clearing where he is located. GREY
++magic is supplied in the five VALLEY tiles and the RUINS tile, GOLD
++magic is supplied in the six WOODS tiles, and PURPLE magic is supplied
++in the MOUNTAIN, LEDGES, CLIFF, HIGH PASS, CAVES and
++CAVERN tiles. GREY, GOLD and PURPLE magic are supplied in every
++clearing on the CRAG tile. In the BORDERLAND tile, GREY magic is
++supplied in clearing ?1?, GOLD magic is supplied in clearings ?2? and ?3?,
++PURPLE magic is supplied in clearings ?4? and ?5?, and both GREY and
++PURPLE magic are supplied in clearing ?6?.
++b. When a tile supplies color magic to a clearing, it also supplies color
++magic to every roadway that runs into that clearing. When a character is on
++a roadway between two clearings, both clearings supply him with color
++magic. EXAMPLE: When a character is on a roadway between an
++enchanted VALLEY tile and an enchanted WOODS tile, he is supplied with
++both GREY and GOLD magic.
++
++
++
++
++http://www.thewinternet.com/bimr/history/day3.html
++
++
++Shouldn't Valdemort, the Witch King (at Mountain 4) be blocked when moving to M-2 (and shouldn't that move take 2 phases)?
++mtn moves in general seem to only take 1 phase
++
++
++Day 4:
++Witch casts absorb essence on T flying dragon: matches move times (4), so can cast spell, but doesn't spell take effect after dragon attacks (2 M3 attacks)?
++*** spells take effect before attacks and moves!! 8.4.3
++
++Day 9:
++Deployment of natives. S1 lures Demon, but then Demon is assigned to attack S3??
++
++
++
++I'm leaning towards TCP/HTTP, but really, it should be independent of the underlying network protocol. OTOH, HTTP might be somewhat limiting, given its pull request/response nature (we may want to support asyncronous/push notifications). I've always hated 'pull' architectures in which clients have to continuously poll for updates... it winds up being so inefficient (in many cases, at least). That's just the nature of the web, I suppose.
+
+
+Property changes on: trunk/docs/impl/todo/mr_game_notes.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/mrsetup.txt
+===================================================================
+--- trunk/docs/impl/todo/mrsetup.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/mrsetup.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,225 @@
++Magic Realm Setup:
++
++
++Visitor/Mission Chits:
++
++1-2 encounter: crone, warlock, shaman, scholar
++3+ encounter: 2 others (TBD)
++
++
++Map Chits:
++
++8 gold-colored site chits
++10 red sound chits
++20 yellow warning chits: 5 each of V, W, C, M
++
++Lost City, Lost Castle: 5 random site/sound chits each
++
++.
++
++
++Newbie's Guide to Magic Realm:
++
++This is a distilled summary of the Magic Realm rules for new players.
++It is primarily designed to get new players up to speed quickly (hopefully 
++along with with more experienced players who know how to setup the board).
++
++The game rules are divided into four sections, called Encounters. There are
++also Advanced and Optional rules.
++
++
++Encounter 1:
++
++Rolling Dice: 
++
++Roll two dice, pick the highest result.
++
++
++Picking a Character:
++
++Choose one of the following (the rest are at a disadvantage in this encounter):
++
++Amazon
++	starts in Inn.
++Dward
++	starts at Guard House or Inn.
++Swordsman
++	starts at Inn.
++White Knight
++	Starts at Inn or Chapel.
++Wizard
++	starts at Inn, House, or Guard House.
++Woods Girl
++	starts at Inn or House.
++
++Get character card, counter (large round counter), all 12 action chits, and weapon
++and armor counters listed in fourth (final) development stage (only those).
++
++Get a Personal History Pad (PHP), write down your character's special advantages.
++Choose dwelling where character will start and victory conditions (secretly).
++
++
++Victory Requirements:
++
++Choose 5 points total and distribute them among the four categories.
++They represent what is most important to the character.
++Characters get a bonus for exceeding these requirements, and are penalized for 
++failing to meet them.
++
++TODO: computing victory points, winning
++
++
++Ending the Game:
++
++Characters may leave the may or suicide.
++If character leaves the map, compute score immediately. 
++
++At the end of the game, characters discard all items they cannot carry.
++Count up the score in each category and subtract requirement recorded. If < 0, 
++multiply by 3 as a penalty.
++
++Basic score: divide each category by its factor (round down).
++Bonus score: multiply basic score in each category by victory points assigned.
++Total score: sum of all basic and bonus scores.
++
++Each character who has a total score of 0 has fulfilled victory requirements
++and can be said to have won the game. 
++
++Victor is character with most points. There may be a victor without a winner!
++
++
++Activities:
++
++Each character gets one turn per day to do activities.
++Characters can perform one action per phase.
++If character spends whole day outside of caves, he gets four phases. 
++Otherwise, he only gets two.
++
++The day is divided into these phases:
++  TODO: Daily Sequence of Play
++
++
++You may pick one activity per phase. 
++The following activities must be recorded in advance in the activity section of the PHP
++during Birdsong:
++
++Move, Search, Hide, Rest, Trade (with natives/visitors), 
++Enhanced Peer (must have special item).
++
++The following can be done in the Evening:
++Trade (between characters), Arrange Belongings, Block.
++
++
++Move:
++  Must move from clearing to clearing, one clearing at a time.
++
++  To record, write "M <tile> <clearing>", where tile can be an abbreviation
++  and clearing is the number. Example: M NW-2 to move to second clearing of Nut Woods.
++  To avoid ambiguity, use 'CG' for Crag, 'CL' for Cliff, 'CS' for Caves, 'CN' for 
++  Cavern.
++
++  May play a move chit whenever leaving a clearing (this is not fatigued), 
++  or active horse or Boots card. Any of these can be played each move.
++    The strength of this chit must meet or exceed the heaviest item the character has,
++	else the character must drop the heavy item(s) (he cannot choose not to move 
++	if the move was plotted in advance).
++  
++  Mountain:
++    Costs two movements (consecutive, during same day) to enter mountain clearing.
++
++  Cave:
++    Cannot enter cave during day in which character used sunlight activity.
++
++  Horses:
++    Horses which are active are being ridden, else they are pack horses and follow 
++	character. Horses cannot enter caves (immediately become inactive).
++
++    To get move bonus, must have horse active during Birdsong and active when he
++	executes the phase during Daylight.
++
++    Warhorse: not extra movement
++	Pack horse: one extra move phase
++	Pony: double move phases
++
++
++
++
++Search:
++  May pick which table to use (Peer, Locate, Loot).
++
++Hide:
++  Characters are hidden at start of game.
++  Characters are unhidden at start of each turn.
++  To record, write 'H'.
++  To hide, roll dice and check the Hide table. If successful, turn counter green side up.
++  Hidden characters are green side up (tan means unhidden).
++  Hidden characters can do activities. If they block, they are immediately unhidden.
++  Monsters cannot block hidden characters.
++  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
++	
++Rest:
++  To record, write 'R'.
++  May activate one fatigued asterisk or convert one wounded asterisk to a
++  fatigued asterisk after each rest activity. May exchange chits to 'make change'.
++
++  TODO: fatigue, wounds
++
++
++Trade:
++  To record, write 'T'.
++  May buy one item or sell any number of items during each trade activity.
++  May buy natives drinks to (hopefully) improve success during trading. This costs 
++  one gold per member of the group.
++
++  Characters must reveal all treasure items they obtain as a result of a trade.
++  TODO: repairing items, fame price, 
++
++Arrange Items:
++
++
++Blocking:
++  Monsters, natives, and characters may block each other.
++  Only time a character can block or be blocked is during his turn.
++  When a character blocks or is blocked, his turn ends instantly and he is unhidden.
++  Monsters cannot block hidden characters.
++  Natives and visitors can block charater if he rolls on Meeting Table (even if hidden).
++
++
++Discoveries:
++  Discoveries are transferable (may be sold or discovered by spying).
++  
++  Spying: TODO
++
++
++Trade Between Characters:
++
++Sharing Information:
++
++
++
++
++Second Encounter:
++
++Characters:
++  TODO
++
++
++
++Activites:
++  Alert (TODO: must be recorded? must use up full activity?)
++
++
++Combat:
++
++  encounter:
++    may play a move chit to run away or a fight chit to activate a weapon 
++    (only if movement time < all monsters' times)
++	if chit was not played, may activate/inactivate one belonging or abandon any 
++	belongings.
++
++  melee:
++    when weapon hits, turn unalerted side up
++    when weapon misses, turn alerted side up
++    
++
++
+
+
+Property changes on: trunk/docs/impl/todo/mrsetup.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/roadmap.txt
+===================================================================
+--- trunk/docs/impl/todo/roadmap.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/roadmap.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,29 @@
++
++    Phase1:
++Hotseat/Single-Player
++limited chars
++no combat, no hiring, no magic, trading,
++Generate/build map, setup card. 
++  Don't record clearing coords; all chits/counters placed manually (popup-menu? toolbar? drag'n'drop)
++  visual representation completely separated from game data; 
++  players can view properties to check consistency
++
++
++    Phase2:
++Network game    
++character/class editor (P1??)
++  add all characters
++
++    Phase3:
++hiring natives
++combat manager
++
++    Phase5:
++tile editor.
++  record tile coordinates; use them to display chits/counters on map
++
++    Phase6:
++Magic
++
++
++
+
+
+Property changes on: trunk/docs/impl/todo/roadmap.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/docs/impl/todo/scenario1.txt
+===================================================================
+--- trunk/docs/impl/todo/scenario1.txt	2005-03-27 03:46:21 UTC (rev 7)
++++ trunk/docs/impl/todo/scenario1.txt	2005-03-28 00:03:21 UTC (rev 8)
+@@ -0,0 +1,45 @@
++Characters:
++(can override attributes, starting locations, equipment, etc)
++
++Treasures:
++
++AMULET: One-use card. This Potion expires when it is activated.
++ANCIENT TELESCOPE: Birdsong card that entitles its owner to an
++extra enhanced PEER phase. Limited to mountain clearings.
++BELT OF STRENGTH: Altering action chits.
++CHEST: TREASURES WITHIN TREASURES substitute card. One-use card.
++CLOAK OF MIST: Birdsong card that entitles its owner to an extra HIDE phase.
++CLOVEN HOOF: Enchanted card that affects Using tables. In the FOURTH ENCOUNTER, it also supplies BLACK magic.
++CRYPT OF THE KNIGHT: TREASURES WITHIN TREASURES Site card.
++CRYSTAL BALL: Birdsong card that entitles its owner to record the enhanced PEER activity (and the remote SPELL activity).
++DEFT GLOVES: Gloves card that also affects Using tables.
++DRAGON ESSENCE: Enchanted card and Daylight card. In the FOURTH ENCOUNTER, it also supplies PURPLE magic.
++ELVEN SLIPPERS: Boots card.
++ENCHANTED MEADOW: TREASURES WITHIN TREASURES Site card.
++FLOWERS OF REST: Enchanted card and Daylight card that causes Instant rest. In the FOURTH ENCOUNTER, it also supplies GOLD magic.
++GLOVES OF STRENGTH: Gloves card.
++GOLDEN ICON: Enchanted card that has no effect. In the FOURTH ENCOUNTER, it supplies GREY magic.
++HANDY GLOVES: Gloves card.
++IMPERIAL TABARD: Inert item. It has no special effect.
++LOST KEYS: Affects Using tables. Also used with the CHEST.
++LUCKY CHARM: Affects Using tables.
++MAGIC WAND: Affects Using tables.
++MAGIC SPECTACLES: Birdsong card that entitles its owner to an extra SEARCH phase.
++MAP OF LOST CASTLE: Affects Using tables.
++MAP OF LOST CITY: Affects Using tables.
++MAP OF RUINS: Affects Using tables.
++MOULDY SKELETON: TREASURES WITHIN TREASURES substitute card.
++POULTICE OF HEALTH: Daylight card that modifies the REST activity. This Potion is consumed by activation.
++POWER BOOTS: Boots card.
++POWER GAUNTLETS: Gloves card.
++QUICK BOOTS: Boots card.
++REGENT OF JEWELS: Birdsong card that entitles its owner to an extra TRADE phase.
++REMAINS OF THIEF: TREASURES WITHIN TREASURES substitute card.
++SACRED GRAIL: Enchanted card that has no effect. In the FOURTH ENCOUNTER, it supplies WHITE color magic.
++7 LEAGUE BOOTS: Boots card and Birdsong card that entitles its owner to an extra MOVE phase.
++SHIELDED LANTERN: Birdsong card that entitles its owner to an extra phase for any normal activity. Limited to cave clearings.
++SHOES OF STEALTH: Boots card that affects Using tables.
++TIMELESS JEWEL: Daylight card that alters how its owner takes his turn.
++TOADSTOOL CIRCLE: Enchanted card and TREASURES WITHIN TREASURES Site card. In the FOURTH ENCOUNTER, it supplies BLACK color magic and it is a Birdsong card that entitles everyone in its clearing to an extra SPELL phase.
++VIAL OF HEALING: Provides Instant rest. This Potion is reusable until Midnight.
++WITHERED CLAW: One-use card. This Potion expires when it is activated.
+
+
+Property changes on: trunk/docs/impl/todo/scenario1.txt
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+
+
+From craigp98072 at yahoo.com  Sun Mar 27 10:08:55 2005
+From: craigp98072 at yahoo.com (craig perras)
+Date: Sun, 27 Mar 2005 00:08:55 -0800 (PST)
+Subject: [Magicrealmdev-svn] test
+Message-ID: <20050327080856.93108.qmail@web53906.mail.yahoo.com>
+
+testd
+
+
+		
+__________________________________ 
+Do you Yahoo!? 
+Yahoo! Small Business - Try our new resources site!
+http://smallbusiness.yahoo.com/resources/ 
+
+
+From craigp at sheep.berlios.de  Mon Mar 28 03:39:17 2005
+From: craigp at sheep.berlios.de (Craig Perras at BerliOS)
+Date: Mon, 28 Mar 2005 03:39:17 +0200
+Subject: [Magicrealmdev-svn] r9 - trunk/docs/impl
+Message-ID: <200503280139.j2S1dHim002688@sheep.berlios.de>
+
+Author: craigp
+Date: 2005-03-28 03:39:15 +0200 (Mon, 28 Mar 2005)
+New Revision: 9
+
+Modified:
+   trunk/docs/impl/phase0.txt
+Log:
+another test of the mailing list
+
+
+Modified: trunk/docs/impl/phase0.txt
+===================================================================
+--- trunk/docs/impl/phase0.txt	2005-03-28 00:03:21 UTC (rev 8)
++++ trunk/docs/impl/phase0.txt	2005-03-28 01:39:15 UTC (rev 9)
+@@ -1,4 +1,3 @@
+-
+ TODO:
+ 
+ project web page; upload files to ftp site
+
+
+
+From craigp at sheep.berlios.de  Tue Mar 29 06:10:54 2005
+From: craigp at sheep.berlios.de (Craig Perras at BerliOS)
+Date: Tue, 29 Mar 2005 06:10:54 +0200
+Subject: [Magicrealmdev-svn] r10 - trunk/project_web
+Message-ID: <200503290410.j2T4AsgR014077@sheep.berlios.de>
+
+Author: craigp
+Date: 2005-03-29 06:10:52 +0200 (Tue, 29 Mar 2005)
+New Revision: 10
+
+Modified:
+   trunk/project_web/summary.html
+Log:
+updated some ftp data
+
+Modified: trunk/project_web/summary.html
+===================================================================
+--- trunk/project_web/summary.html	2005-03-28 01:39:15 UTC (rev 9)
++++ trunk/project_web/summary.html	2005-03-29 04:10:52 UTC (rev 10)
+@@ -4,8 +4,11 @@
+   </head>
+   <body>
+     <h2>Project Info</h2>
++        project page: http://developer.berlios.de/projects/magicrealmdev/
+     <h3>Summary</h3>
+     <h3>Goal</h3>
++    <h3>Status</h3>
++    <h3>News</h3>
+ 
+ 
+     <h3>Subversion</h3>
+@@ -27,8 +30,25 @@
+     <h2>Magic Realm Resources</h2>
+     <ul>
+     <pre>
+-      link to FTP site, file modules, where appropo
+-      links 
++      released files (file modules)
++
++
++      FTP site ftp://ftp.berlios.de/pub/magicrealmdev/
++
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/2ERules.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/3ELAndT.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/3ERules.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/idxmr2.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/idxmr.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/LeastMR8.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/Magic_Primer6.doc
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/MagicRealmTables.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/mr2ed.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/MRflowchart.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/MRIPE.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/mrnet.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/mrtables.pdf
++ftp://ftp.berlios.de/pub/magicrealmdev/rules/quickref.pdf
+       
+       Docs:
+         Least you need to know about Magic Realm http://www.geocities.com/SiliconValley/Vista/9049/leastmr8.pdf
+
+
+

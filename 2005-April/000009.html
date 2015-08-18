@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Magicrealmdev-svn] r14 - trunk/project_web
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/magicrealmdev-svn/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:magicrealmdev-svn%40lists.berlios.de?Subject=Re%3A%20%5BMagicrealmdev-svn%5D%20r14%20-%20trunk/project_web&In-Reply-To=%3C200504121010.j3CAAISA003082%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000008.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Magicrealmdev-svn] r14 - trunk/project_web</H1>
+    <B>Craig Perras at BerliOS</B> 
+    <A HREF="mailto:magicrealmdev-svn%40lists.berlios.de?Subject=Re%3A%20%5BMagicrealmdev-svn%5D%20r14%20-%20trunk/project_web&In-Reply-To=%3C200504121010.j3CAAISA003082%40sheep.berlios.de%3E"
+       TITLE="[Magicrealmdev-svn] r14 - trunk/project_web">craigp at sheep.berlios.de
+       </A><BR>
+    <I>Tue Apr 12 12:10:18 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000008.html">[Magicrealmdev-svn] r13 - trunk/project_web
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: craigp
+Date: 2005-04-12 12:10:17 +0200 (Tue, 12 Apr 2005)
+New Revision: 14
+
+Modified:
+   trunk/project_web/summary.html
+Log:
+added screenshot to web page
+
+
+Modified: trunk/project_web/summary.html
+===================================================================
+--- trunk/project_web/summary.html	2005-04-12 10:05:30 UTC (rev 13)
++++ trunk/project_web/summary.html	2005-04-12 10:10:17 UTC (rev 14)
+@@ -10,26 +10,31 @@
+     &lt;h3&gt;Status&lt;/h3&gt;
+     &lt;h3&gt;News&lt;/h3&gt;
+ 
++        &lt;p&gt;
++        4/12/05 The first &lt;a href=&quot;map1.jpg&quot;&gt;screenshot&lt;/a&gt; is now available!!
++        It's not much; only a pic of the 3-d map of the map editor prototype. But it's something!
++        &lt;/p&gt;
++        
+ 
+     &lt;h3&gt;Subversion&lt;/h3&gt;
+     &lt;ul&gt;
+-      &lt;li&gt;browse: <A HREF="http://svn.berlios.de/viewcvs/magicrealmdev/&lt;/li">http://svn.berlios.de/viewcvs/magicrealmdev/&lt;/li</A>&gt;
+-      &lt;li&gt;anon access: svn checkout <A HREF="svn://svn.berlios.de/magicrealmdev/trunk&lt;/li">svn://svn.berlios.de/magicrealmdev/trunk&lt;/li</A>&gt;
+-      &lt;li&gt;dev access:&lt;/br&gt;
+-        export SVN_SSH=&quot;ssh -l login-name&quot;&lt;/br&gt;
+-        svn checkout svn+<A HREF="ssh://svn.berlios.de/svnroot/repos/magicrealmdev/trunk&lt;/br">ssh://svn.berlios.de/svnroot/repos/magicrealmdev/trunk&lt;/br</A>&gt;
+-        or, I either use cygwin's ssh, or putty/plink. To get the latter to work, I had to generate keys
+-        and register the pub key with svn.berlios.de before it would work.&lt;/br&gt;
+-        set SVN_SSH=plink -ssh -2 -l login-name&lt;/br&gt;
+-        there are no quotes in the set SVN_SSH command. 
+-      &lt;/li&gt;
++      &lt;li&gt;browse: <A HREF="http://svn.berlios.de/viewcvs/magicrealmdev/">http://svn.berlios.de/viewcvs/magicrealmdev/</A> 
++      &lt;li&gt;anon access: svn checkout 
++  <A HREF="svn://svn.berlios.de/magicrealmdev/trunk">svn://svn.berlios.de/magicrealmdev/trunk</A> 
++      &lt;li&gt;dev access:&lt;BR&gt;export SVN_SSH=&quot;ssh -l 
++  login-name&quot;&lt;BR&gt;svn checkout 
++  svn+<A HREF="ssh://svn.berlios.de/svnroot/repos/magicrealmdev/trunk&lt;BR">ssh://svn.berlios.de/svnroot/repos/magicrealmdev/trunk&lt;BR</A>&gt;or, I either use 
++  cygwin's ssh, or putty/plink. To get the latter to work, I had to generate 
++  keys and register the pub key with svn.berlios.de before it would work.&lt;BR&gt;set 
++  SVN_SSH=plink -ssh -2 -l login-name&lt;BR&gt;there are no quotes in the set SVN_SSH 
++  command. 
+ 
+-      &lt;li&gt;resources:&lt;/li&gt;
++      &lt;li&gt;resources: 
+         &lt;ul&gt;
+-          &lt;li&gt;home page: <A HREF="http://subversion.tigris.org/&lt;/li">http://subversion.tigris.org/&lt;/li</A>&gt;
++          &lt;li&gt;home page: <A HREF="http://subversion.tigris.org/">http://subversion.tigris.org/</A> 
+           &lt;li&gt;book: <A HREF="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</A>
+             CVS-users should read Appendix A. Subversion for CVS Users: <A HREF="http://svnbook.red-bean.com/en/1.0/apa.html&lt;/li">http://svnbook.red-bean.com/en/1.0/apa.html&lt;/li</A>&gt;
+-        &lt;/ul&gt;            
++        &lt;/ul&gt;&lt;/li&gt;            
+     &lt;/ul&gt;
+   
+     &lt;h2&gt;Magic Realm Resources&lt;/h2&gt;
+@@ -68,18 +73,22 @@
+         summary of combat
+         evening flow charts
+       &lt;/pre&gt;  
+-      &lt;li&gt;Bruno Wolff's mailing list: <A HREF="http://wolff.to/mr/&lt;/li">http://wolff.to/mr/&lt;/li</A>&gt;
+-      &lt;li&gt;Wiki&lt;/li&gt;
++      &lt;li&gt;Bruno Wolff's mailing list: <A HREF="http://wolff.to/mr/">http://wolff.to/mr/</A> 
++      &lt;li&gt;Wiki
+       
+-      &lt;li&gt;Nand's: page <A HREF="http://www.geocities.com/SiliconValley/Vista/9049/mr00.htm&lt;/li">http://www.geocities.com/SiliconValley/Vista/9049/mr00.htm&lt;/li</A>&gt;
+-      &lt;li&gt;Boardgame Geek <A HREF="http://www.boardgamegeek.com/game/22&lt;/li">http://www.boardgamegeek.com/game/22&lt;/li</A>&gt;
+-      &lt;li&gt;Teresa Michelsen's MR Parts: <A HREF="http://www.tarotmoon.com/MRParts/mrparts.html&lt;/li">http://www.tarotmoon.com/MRParts/mrparts.html&lt;/li</A>&gt;
+-      &lt;li&gt;Current double-board PBEM game, 'Yellow': <A HREF="http://users.rcn.com/dwfiv/yellow/&lt;/li">http://users.rcn.com/dwfiv/yellow/&lt;/li</A>&gt;
++      &lt;li&gt;Nand's: page 
++  <A HREF="http://www.geocities.com/SiliconValley/Vista/9049/mr00.htm">http://www.geocities.com/SiliconValley/Vista/9049/mr00.htm</A> 
++      &lt;li&gt;Boardgame Geek <A HREF="http://www.boardgamegeek.com/game/22">http://www.boardgamegeek.com/game/22</A> 
++      &lt;li&gt;Teresa Michelsen's MR Parts: 
++  <A HREF="http://www.tarotmoon.com/MRParts/mrparts.html">http://www.tarotmoon.com/MRParts/mrparts.html</A> 
++      &lt;li&gt;Current double-board PBEM game, 'Yellow': 
++  <A HREF="http://users.rcn.com/dwfiv/yellow/">http://users.rcn.com/dwfiv/yellow/</A>
+       
+-      &lt;li&gt;The Realm <A HREF="http://magicrealm.dewkid.com/&lt;/li">http://magicrealm.dewkid.com/&lt;/li</A>&gt;
+-      &lt;li&gt;The Magic Realm Keep <A HREF="http://www.geocities.com/finiasjynx/&lt;/li">http://www.geocities.com/finiasjynx/&lt;/li</A>&gt;
++      &lt;li&gt;The Realm <A HREF="http://magicrealm.dewkid.com/">http://magicrealm.dewkid.com/</A> 
++      &lt;li&gt;The Magic Realm Keep 
++  <A HREF="http://www.geocities.com/finiasjynx/">http://www.geocities.com/finiasjynx/</A>
+       
+-      &lt;li&gt;Cyberboard?&lt;/li&gt;
++      &lt;li&gt;Cyberboard? 
+       &lt;li&gt;Complete (zip file) on ftp site&lt;/li&gt;
+       
+     &lt;/ul&gt;
+@@ -125,4 +134,3 @@
+     &lt;/pre&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+-
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000008.html">[Magicrealmdev-svn] r13 - trunk/project_web
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/magicrealmdev-svn">More information about the Magicrealmdev-svn
+mailing list</a><br>
+</body></html>
